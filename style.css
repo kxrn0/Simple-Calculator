@@ -32,6 +32,11 @@ body {
     transform: scale(.995);
 }
 
+.note {
+    margin-top: 10px;
+    font-size: 10px;
+}
+
 /* DISPLAY */
 
 .display {
@@ -40,14 +45,13 @@ body {
 }
 
 .top-display, .main-display {
-    padding: 15px;
     font-family: monospace;
     color:rgb(60, 68, 65);
     box-shadow: 0 10px 20px rgb(22, 21, 21);
-    /* overflow: scroll; */
 }
 
 .top-display {
+    padding: 15px;
     background: rgb(221, 206, 206);
     font-size: 23px;
     height: 60px;
@@ -55,19 +59,27 @@ body {
 
 .main-display {
     background: rgb(233, 232, 238);
-    font-size: 45px;
+    padding: 5px;
     height: 80px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
+
+.digit {
+    border-radius: 10px;
+    font-size: 40px;
+  }
 
 .blink {
     background: #fff;
-    animation: anime .75s linear infinite;
+    animation: anime .55s linear infinite;
     color: #000;
 }
 
 @keyframes anime {
     0% {
-      opacity: 0;
+      opacity: .1;
     }
     50% {
       opacity: .25;
