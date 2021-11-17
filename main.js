@@ -33,6 +33,11 @@ function init(initial) {
     operands = [initial, ''];
     index = 0;
 
+    if (cursor)
+        numPads[cursor].classList.remove("blink");
+    cursor = numPads.length - 1;
+    numPads[cursor].classList.add("blink");
+
     for (let i = 0; i < numPads.length; i++)
         numPads[i].innerText = '';
     topDisplay.innerText = '';
