@@ -181,40 +181,36 @@ function handle_operations(command) {
     if (!operands[0])
         return;
 
-    let valid = true;
     for (let char of operands[0])
-        if (!valid_char(char)) {
-            valid = false;
-            break;
-        }
+        if (!valid_char(char))
+            return;
 
-    if (valid) {
-        if (command == "+/-") {
-            index = operator ? 1 : 0;
+    if (command == "+/-") {
+        index = operator ? 1 : 0;
 
-            if (memA && !index)
-                memA = false;
-            else if (memB)
-                memB = false;
+        if (memA && !index)
+            memA = false;
+        else if (memB)
+            memB = false;
 
-            operands[index] = String(-1 * parseFloat(operands[index]));
-        }
-        else if (command == '=' || command == "Enter") {
-            if (memA && !index)
-                init(memoryValue);
-            else if (operator && operands[1]) {
-                operands[0] = operate(operator);
-                init(operands[0]);
-            }
-        }
-        else {
-            if (operator) {
-                operands[0] = operate(operator);
-                init(operands[0]);
-            }
-            operator = command;
+        operands[index] = String(-1 * parseFloat(operands[index]));
+    }
+    else if (command == '=' || command == "Enter") {
+        if (memA && !index)
+            init(memoryValue);
+        else if (operator && operands[1]) {
+            operands[0] = operate(operator);
+            init(operands[0]);
         }
     }
+    else {
+        if (operator) {
+            operands[0] = operate(operator);
+            init(operands[0]);
+        }
+        operator = command;
+    }
+
 
     display();
 }
